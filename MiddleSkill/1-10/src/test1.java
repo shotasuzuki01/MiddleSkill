@@ -101,7 +101,7 @@ public class test1 {
 				System.out.println("問８");
 
 				//問題8:Map"car"の「キー："toyota"」のバリューを出力してください。
-				System.out.print(car.get(1));
+				System.out.print(car.get("toyota"));
 
 				//改行
 				System.out.println();
