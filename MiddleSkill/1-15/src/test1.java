@@ -13,11 +13,7 @@ public class test1 {
 		System.out.println("問２");
 		//問２のメソッドを呼び出して出力してください（引数"しんぶんし"）
 		String word="しんぶんし";
-		if(isKaibun(word)) {
-			System.out.print(word+"は回文です");
-		}else {
-			System.out.print(word+"回文ではないです");
-		}
+		System.out.print(isKaibun(word));
 		//改行
 		c();
 		System.out.println("問３");
