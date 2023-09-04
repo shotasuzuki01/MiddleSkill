@@ -24,33 +24,20 @@ public class test1 {
 		List<String> strArray2 = new ArrayList<String>();
 		List<String> strArray3 = new ArrayList<String>();
 		List<String> strArray4 = new ArrayList<String>();
-		for (int i = 0; i < strArray1.size(); i++) {
+		for (int i = 2; i < strArray1.size(); i++) {
 			strArray2.add(strArray1.get(i));
-			for (int j = 0; j < strArray2.size(); j++) {
-				if (strArray2.get(j).equals("k")) {
-					strArray3.add(strArray2.get(j));
-				} else if (strArray2.get(j).equals("a")) {
-					strArray3.add(strArray2.get(j));
-				} else if (strArray2.get(j).equals("o")) {
-					strArray3.add(strArray2.get(j));
+			for (String a : strArray2) {
+				if (a.equals("k") || a.equals("a") || a.equals("o")) {
+					strArray3.add(a);
 				} else {
 					continue;
 				}
-				for (int k = 0; k < strArray3.size(); k++) {
-					if (strArray3.get(k).equals("k")) {
-						strArray4.add(strArray3.get(k));
-						if (strArray3.get(k).equals("a")) {
-							strArray4.add(strArray3.get(k));
-						} else if (strArray3.get(k).equals("k")) {
-							break;
-						}
-						} else if (strArray3.get(k).equals("a")) {
-							continue;
-					}
+				for (String b : strArray3) {
+					strArray4.add(b);
 
 				}
 			}
+				System.out.println(strArray4);
 		}
-		System.out.println(strArray4);
 	}
 }
