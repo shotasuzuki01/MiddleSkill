@@ -29,15 +29,17 @@ public class test1 {
 			for (String a : strArray2) {
 				if (a.equals("k") || a.equals("a") || a.equals("o")) {
 					strArray3.add(a);
+					for (String b : strArray3) {
+						strArray4.add(b);
+
+					}
 				} else {
 					continue;
 				}
-				for (String b : strArray3) {
-					strArray4.add(b);
-
-				}
 			}
-				System.out.println(strArray4);
 		}
+		strArray4.subList(0, strArray4.size() - 6).clear();
+		strArray4.remove(4);
+		System.out.println(strArray4);
 	}
 }
