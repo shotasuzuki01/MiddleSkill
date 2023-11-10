@@ -35,20 +35,26 @@ Model
 
 
 
-「view」→「controller」→「Entity」→「service」→「serviceimpl」→「Entity」
+「view」→「controller」→「form」→「controller」→「sevice 」→「serviceimpl」
 →「dao」→「daoimpl」→「Entity」→「DB」→「Entity」→「daoimpl」
-→「dao」→「Entity」→「 」→「controller」→「 」→「controller」
+→「dao」→「serviceimpl」→「sevice」→「controller」→「form」→「controller」
 →「view」
 
 
-⑦各コンポーネントの責務を答えなさい。（Controller）
 
+⑦各コンポーネントの責務を答えなさい。（Controller）
+コントローラレイヤを扱う。
+コントローラレイヤでは、フロントからのリクエスト、およびフロントへのレスポンスのハンドリングのみを行う。
 
 
 
 ⑧各コンポーネントの責務を答えなさい。（Service）
-
+サービスレイヤを扱う。
+サービスレイヤでは主に、業務プロセスを表現する。
+レスポンス、リクエストに依存したような処理や、永続化処理はこのレイヤではおこなってはならない。
 
 
 
 ⑨各コンポーネントの責務を答えなさい。（Configuration）
+コンフィグレーションレイヤを扱う。
+構成管理や設定などを表現する。
