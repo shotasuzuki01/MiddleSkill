@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link th:href="@{/css/edit.css}" rel="stylesheet">
+</head>
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>編集</h2>
+	<form th:action="@{/user/update}" th:object="${userUpdateRequest}"
+		th:method="Post">
+
+		<!-- 名前入力 -->
+		<div class="main">
+			<div class="name">
+				<label>名前</label><br>
+				<input type="text" th:field="*{name}" maxlength="10" size="15" />
+								<!-- 個別エラーメッセージ -->
+				<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+			</div>
+			<br>
+
+		<!-- 年齢入力 -->
+			<div class="age">
+				<label>年齢</label><br>
+				<input type="text" th:field="*{age}" maxlength="3" size="15" />
+								<!-- 個別エラーメッセージ -->
+				<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age Error</span>
+			</div>
+				<br>
+
+		<div class="botton">
+			<input type="submit" value="更新"></input>
+		</div>
+		</div>
+	</form>
+		<div class="link">
+		<a th:href="@{/user/list}">一覧画面へ</a>
+		</div>
+</body>
+</html>

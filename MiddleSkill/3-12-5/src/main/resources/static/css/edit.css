@@ -1,0 +1,32 @@
+body{
+	position:relative;
+}
+h2 {
+	position:absolute;
+	left:47%;
+	font-size: 1.8em;
+}
+span {
+	color:red;
+}
+.name{
+	top:160%;
+	position:absolute;
+	left:44%;
+}
+.age{
+	position:absolute;
+	top:280%;
+	left:44%;
+}
+.botton {
+	position:absolute;
+	top:420%;
+	left:47.5%;
+}
+
+.link {
+	position:absolute;
+	top:510%;
+	left:46%;
+}

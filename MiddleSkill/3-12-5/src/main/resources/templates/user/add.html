@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link th:href="@{/css/add.css}" rel="stylesheet">
+</head>
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>新規登録</h2>
+	<form th:action="@{/user/create}" th:object="${userRequest}"
+		th:method="Post">
+
+		<!-- 名前入力 -->
+		<div class="main">
+			<div class="name">
+				<label>名前</label><br>
+				<input type="text" th:field="*{name}" maxlength="10" size="15" />
+								<!-- 個別エラーメッセージ -->
+				<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+			</div>
+			<br>
+
+		<!-- 年齢入力 -->
+			<div class="age">
+				<label>年齢</label><br>
+				<input type="text" th:field="*{age}" maxlength="3" size="15" />
+								<!-- 個別エラーメッセージ -->
+				<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age Error</span>
+			</div>
+				<br>
+
+		<!-- 日付入力 -->
+			<div class="date">
+				<label>日付</label>
+				<br>
+						<input type="date" th:field="*{createDate}" size="15">
+								<!-- 個別エラーメッセージ -->
+				<!-- <span th:if="${#fields.hasErrors('createDate')}" th:errors="*{createDate}">create_Date Error</span> -->
+					</div>
+						<br>
+
+			<!-- 性別プルダウン-->
+			<div class="pulldown">
+				<select name="bloodtype">
+					<option value="1">男性</option>
+					<option value="2">女性</option>
+				</select>
+				<!-- 血液型プルダウン -->
+				<select name="bloodtype">
+					<option value="A">A型</option>
+					<option value="B">B型</option>
+					<option value="O">O型</option>
+					<option value="AB">AB型</option>
+				</select>
+			</div>
+		<div class="botton">
+			<input type="submit" value="作成"></input>
+		</div>
+		</div>
+	</form>
+		<div class="link">
+		<a th:href="@{/user/list}">一覧画面へ</a>
+		</div>
+</body>
+</html>

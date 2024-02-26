@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link th:href="@{/css/list.css}" rel="stylesheet">
+</head>
+
+<body>
+		<h2>メンバーリスト</h2>
+	<div class="container">
+		<table class="table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>名前</th>
+					<th>年齢</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user : ${userlist}" th:object="${user}"
+					class="align-middle">
+					<td th:text="*{id}"></td>
+					<td th:text="*{name}"></td>
+					<td th:text="*{age}"></td>
+					<td><a th:href="@{/user/{id}/edit(id=*{id})}"class="btn btn-secondary">編集</a></td>
+					<td><button th:href="@{/user/{id}/delete(id=*{id})}">削除</button>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="link">
+		<a th:href="@{/user/add}">新規作成</a>
+	</div>
+</body>
+</html>
