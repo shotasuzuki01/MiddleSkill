@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" style=width:300px;>
+<tr>
+<th>名前</th>
+<th style=width:40%;>金額</th>
+<th>個数</th>
+<th>担当</th>
+</tr>
+<tr>
+<td>車</td>
+<td rowspan="2">100万円</td>
+<td>300</td>
+<td>山田</td>
+</tr>
+<tr>
+<td>自転車</td>
+<!--rowspan対象
+<td>100万円</td>
+-->
+<td>3台</td>
+<td rowspan="2">田中</td>
+</tr>
+<tr>
+<td>飛行機</td>
+<td colspan="2">不明</td>
+<!--colspan対象
+<td>不明</td>
+-->
+<!-- rowspan対象
+<td>田中</td>
+-->
+</tr>
+<tr>
+<td colspan="3">秘密</td>
+<!-- solspan対象
+<td>秘密</td>
+<td>秘密</td>
+-->
+<td>金子</td>
+</tr>
+
+
+</table>
+
+</body>
+</html>
