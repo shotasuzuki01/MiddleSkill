@@ -31,7 +31,6 @@
 				<br>
 
 
-
 			<!-- 性別プルダウン-->
 			<div class="pulldown">
 				<select name="bloodtype">
@@ -45,12 +44,6 @@
 					<option value="O">O型</option>
 					<option value="AB">AB型</option>
 				</select>
-			<!-- ポジション -->
-			<label for="departmentID">職種</label>
-			<select >
-				<option th:value="0"></option>
-				<option th:each="item: ${DepartmentMap}" th:value="${item.value}" th:text="{item.key}"></option>
-			</select>
 
 			</div>
 			<div class="botton">

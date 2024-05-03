@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.demo.repository.UserMapper">
+
+<!-- 全検索 -->
+<select id="findAll" resultType="com.example.demo.entity.User">
+SELECT * FROM userinfo
+</select>
+<!-- 主キー検索 -->
+<select id="findById" resultType="com.example.demo.entity.User">
+SELECT * FROM userinfo WHERE id=#{id}
+</select>
+<!-- 新規登録 -->
+<insert id="save">
+INSERT INTO userinfo
+(name,gender_id,blood_type_id,user_position,age)
+VALUES)#{name},#{gender_id},#{blood_type_id},#{user_position},#{age})
+</insert>
+<!-- 更新 -->
+<update id="update">
+UPDATE userinfo SET name=#{name},gender_id=#{gender_id},blood_type_id={blood_type_id},user_position=#{user_position},age=#{age} WHERE id=#{id}
+</update>
+<!-- 役職の全件取得 -->
+<!-- マッピング定義(店舗) -->
+<resultMap type="com.example.demo.entity.Department" id="department">
+	<id column="department_id" property="departmentId" />
+	<result column="department_name" property="departmentName" />
+</resultMap>
+<select id="findAllDepartment" resultType="com.example.demo.entity.Department">
+SELECT * FROM department
+</select>
+
+</mapper>

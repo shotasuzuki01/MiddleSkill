@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class UserRequest implements Serializable {
+public class UserAddRequest implements Serializable {
 
 	/**
 	 * 名前
@@ -34,11 +34,15 @@ public class UserRequest implements Serializable {
 	 * 登録日
 	 */
 
-	private Date createDate;
+	//private Date createDate;
 
 	/**
 	 * 血液型
 	 */
 	private int blood_type_id;
+	/**
+	 * 役職
+	 */
+	private String user_position;
 
 }

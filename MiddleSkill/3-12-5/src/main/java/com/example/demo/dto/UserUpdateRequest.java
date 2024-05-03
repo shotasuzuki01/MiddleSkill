@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class UserUpdateRequest extends UserRequest implements Serializable{
+public class UserUpdateRequest extends UserAddRequest implements Serializable{
 	/**
 	 * ユーザーID
 	 */

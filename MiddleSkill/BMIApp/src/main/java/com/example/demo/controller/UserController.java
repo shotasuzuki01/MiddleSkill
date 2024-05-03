@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,9 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.dto.UserAddRequest;
+import com.example.demo.dto.UserRequest;
 import com.example.demo.dto.UserUpdateRequest;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
@@ -42,7 +39,7 @@ public class UserController {
    */
   @GetMapping(value = "/user/list")
   public String displayList(Model model) {
-    List<User> userlist = userService.findAll();
+    List<User> userlist = userService.searchAll();
     model.addAttribute("userlist", userlist);
     return "user/list";
   }
@@ -54,9 +51,7 @@ public class UserController {
    */
   @GetMapping(value = "/user/add")
   public String displayAdd(Model model) {
-	  Map<Integer, String>departmentMap=userService.getDepartmentMap();
-	  model.addAttribute("departmentMap",departmentMap);
-	  model.addAttribute("userRequest",new UserAddRequest());
+	  model.addAttribute("userRequest",new UserRequest());
     return "user/add";
   }
   /**
@@ -64,7 +59,7 @@ public class UserController {
    * @param userRequest　リクエストデータ
    */
   @RequestMapping(value="/user/create",method=RequestMethod.POST)
-  public String create(@Validated @ModelAttribute UserAddRequest userRequest,BindingResult result,Model model) {
+  public String create(@Validated @ModelAttribute UserRequest userRequest,BindingResult result,Model model) {
 	  if(result.hasErrors()) {
 		  //入力エラー
 		  List<String>errorList=new ArrayList<String>();
@@ -75,7 +70,7 @@ public class UserController {
 		  return"user/add";
 	  }
 	  //ユーザー情報の登録
-	  userService.save(userRequest);
+	  userService.create(userRequest);
 	  return "redirect:/user/list";
   }
 
@@ -120,5 +115,4 @@ public class UserController {
 	  userService.delete(id);
 	  return"redirect:/user/list";
   }
-
 }

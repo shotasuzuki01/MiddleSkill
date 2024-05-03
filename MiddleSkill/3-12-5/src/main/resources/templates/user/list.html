@@ -14,7 +14,7 @@
 					<th>ID</th>
 					<th>名前</th>
 					<th>年齢</th>
-					<th></th>
+					<th>役職</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,8 +23,9 @@
 					<td th:text="*{id}"></td>
 					<td th:text="*{name}"></td>
 					<td th:text="*{age}"></td>
+					<td th:text="*{user_position}"></td>
 					<td><a th:href="@{/user/{id}/edit(id=*{id})}"class="btn btn-secondary">編集</a></td>
-					<td><button th:href="@{/user/{id}/delete(id=*{id})}">削除</button>
+					<td><button th:href="@{/user/{id}/delete(id=*{id})}">削除</button></td>
 				</tr>
 			</tbody>
 		</table>

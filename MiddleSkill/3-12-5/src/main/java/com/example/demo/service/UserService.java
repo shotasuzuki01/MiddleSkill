@@ -1,15 +1,19 @@
 package com.example.demo.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.dto.UserRequest;
+import com.example.demo.dto.UserAddRequest;
 import com.example.demo.dto.UserUpdateRequest;
+import com.example.demo.entity.Department;
 import com.example.demo.entity.User;
-import com.example.demo.repository.UserRepository;
+
+import com.example.demo.repository.UserMapper;
 
 /**
  * ユーザー情報 Service
@@ -19,51 +23,60 @@ import com.example.demo.repository.UserRepository;
 public class UserService {
 
   /**
-   * ユーザー情報 Repository
+   * ユーザー情報 Mapper
    */
-  @Autowired
-  private UserRepository userRepository;
+	@Autowired
+	private UserMapper userMapper;
 
   /**
    * ユーザー情報 全検索
    * @return 検索結果
    */
-  public List<User> searchAll() {
-    return userRepository.findAll();
+  public List<User> findAll() {
+    return userMapper.findAll();
   }
   /**
-   * ユーザー情報　新規登録
-   */
-  public void create(UserRequest userRequest) {
-	  User user=new User();
-	  user.setName(userRequest.getName());
-	  user.setAge(userRequest.getAge());
-	  user.setGender_id(userRequest.getGender_id());
-	  user.setBlood_type_id(userRequest.getBlood_type_id());
-	 // user.setCreateDate(userRequest.getCreateDate());
-  }
-  /**
-   * ユーザー情報　主キー検索
+   * ユーザー情報主キー検索
    */
   public User findById(Long id) {
-	  return userRepository.findById(id).get();
+	  return userMapper.findById(id);
+  }
+  /**
+   * ユーザー情報登録
+   */
+  public void save(UserAddRequest userAddRequest) {
+	  userMapper.save(userAddRequest);
   }
   /**
    * ユーザー情報更新
    */
   public void update(UserUpdateRequest userUpdateRequest) {
-	  User user=findById(userUpdateRequest.getId());
-	  user.setName(userUpdateRequest.getName());
-	  user.setAge(userUpdateRequest.getAge());
-	  user.setGender_id(userUpdateRequest.getGender_id());
-	  user.setBlood_type_id(userUpdateRequest.getBlood_type_id());
-	  userRepository.save(user);
+	  userMapper.update(userUpdateRequest);
   }
   /**
-   * ユーザー情報削除
+   * ユーザー情報論理削除
    */
   public void delete(Long id) {
-	  User user=findById(id);
-	  userRepository.delete(user);
+	  userMapper.delete(id);
   }
+  /**
+   * 役職プルダウン格納
+   *
+   */
+  public Map<Integer,String>getDepartmentMap(){
+		List<Department>Department=userMapper.findAllDepartment();
+
+		Map<Integer,String>DepartmentMap= new LinkedHashMap<>();
+
+		for(Department row : Department) {
+			Integer departmentId= row.getDepartmentId();
+			String departmentName= row.getDepartmentName();
+			DepartmentMap.put(departmentId, departmentName);
+		}
+		return DepartmentMap;
+	}
 }
+
+
+
+
